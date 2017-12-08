@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <title>Teste Lojas</title>
+
+        <link href="..\node_modules\angular\node_modules\bootstrap\dist\css\bootstrap.css" rel="stylesheet">
+
+        <script src="..\node_modules\angular\angular.min.js"></script>
+        
+        <script src="controladores\module.js"></script>
+
+        <script src="controladores\TelaInicialController.js"></script>
+    </head>
+
+    <body ng-app="lojas">
+
+        <h1>It Works!!</h1>
+
+        <div ng-controller="TelaInicialController">
+
+            <h2>Lista de Cidades-Loja</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <td>Nome</td>
+                        <td>Longitude</td>
+                        <td>Latitude</td>
+                    </tr>
+                    
+                </thead>
+                
+                <tbody>
+                    <tr ng-repeat="loja in lojas">
+                        <td>{{loja.name}}</td>
+                        <td>{{loja.longitude}}</td>
+                        <td>{{loja.latitude}}</td>
+
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+
+    </body>
+
+</html>

@@ -5,6 +5,8 @@ var bodyParser = require('body-parser');
 
 var Loja = require('./models/loja');
 
+var path = require('path')
+
 //conexao ao banco de dados
 var mongoose   = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/base_app'); // connect to our database
@@ -36,6 +38,11 @@ router.get('/', function(req, res) {
 });
 
 // more routes for our API will happen here
+
+router.get('/index').use(function(req, res){
+
+    res.sendFile(path.join(__dirname + '/angular/index.html'));
+});
 
 
 // on routes that end in /bears
