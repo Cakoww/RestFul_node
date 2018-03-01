@@ -1,11 +1,15 @@
 //inclusão dos pacotes usados na aplicacao
 var express = require('express');
 var app = express();
+
+
 var bodyParser = require('body-parser');
 
 var Loja = require('./models/loja');
+var Oferta = require('./models/Oferta');
 
 var path = require('path')
+
 
 //conexao ao banco de dados
 var mongoose   = require('mongoose');
@@ -17,6 +21,14 @@ mongoose.connect('mongodb://localhost:27017/base_app'); // connect to our databa
 // this will let us get the data from a POST
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json());
+
+
+
+app.use('/modules',express.static(path.join(__dirname + '/node_modules')));
+app.use('/angular',express.static(path.join(__dirname + '/angular')));
+
+
+
 
 var port = process.env.PORT || 3000; //nossa porta
 
@@ -37,12 +49,8 @@ router.get('/', function(req, res) {
     res.json({ message: 'hooray! welcome to our api!' });   
 });
 
-// more routes for our API will happen here
 
-router.get('/index').use(function(req, res){
 
-    res.sendFile(path.join(__dirname + '/angular/index.html'));
-});
 
 
 // on routes that end in /bears
@@ -52,11 +60,11 @@ router.route('/lojas')
     // create a bear (accessed at POST http://localhost:8080/api/bears)
     .post(function(req, res) {
 
-        var loja = new Loja();      // create a new instance of the Bear model
-        loja.name = req.body.name;  // set the bears name (comes from the request)
+        var loja = new Loja();              // create a new instance of the Bear model
+        loja.name = req.body.name;          // set the bears name (comes from the request)
         loja.latitude = req.body.latitude;  // set the bears name (comes from the request)
         loja.longitude = req.body.longitude;  // set the bears name (comes from the request)
-        console.log('request: ' + req.body);
+        console.log('request: ' + req.body.name);
 
         // save the bear and check for errors
         loja.save(function(err) {
@@ -130,6 +138,11 @@ router.route('/lojas')
 
 
         });
+    });
+    
+
+    router.route('/index').get(function(req, res){
+        res.sendFile(__dirname +'/angular/index.html');
     });
 
 
