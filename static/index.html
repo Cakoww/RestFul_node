@@ -2,13 +2,13 @@
     <head>
         <title>Teste Lojas</title>
 
-        <link href="modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+        <link href="node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
 
-        <script src="modules/angular/angular.min.js"></script>
+        <script src="node_modules/angular/angular.min.js"></script>
         
-        <script src="angular/controladores/module.js"></script>
+        <script src="static/controladores/module.js"></script>
 
-        <script src="angular/controladores/TelaInicialController.js"></script>
+        <script src="static/controladores/TelaInicialController.js"></script>
     </head>
 
     <body ng-app="lojas">
@@ -19,7 +19,13 @@
 
             <h2>Lista de Cidades-Loja</h2>
 
-            <table>
+            <div class="card" style="width: 30rem;">
+                <ul class="list-group list-group-flush" ng-repeat="loja in lojas">
+                  <li class="list-group-item">{{loja.name}} || {{loja.longitude}} || {{loja.latitude}}</li>
+                </ul>
+            </div>
+
+<!--            <table>
                 <thead>
                     <tr>
                         <td>Nome</td>
@@ -38,7 +44,7 @@
                     </tr>
                 </tbody>
             </table>
-
+-->
         </div>
 
 

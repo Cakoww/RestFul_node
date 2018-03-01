@@ -24,8 +24,8 @@ app.use(bodyParser.json());
 
 
 
-app.use('/modules',express.static(path.join(__dirname + '/node_modules')));
-app.use('/angular',express.static(path.join(__dirname + '/angular')));
+app.use(express.static(__dirname));
+app.use('/angular', express.static(__dirname + '/angular'));
 
 
 
@@ -142,13 +142,13 @@ router.route('/lojas')
     
 
     router.route('/index').get(function(req, res){
-        res.sendFile(__dirname +'/angular/index.html');
+        res.sendFile(__dirname +'/static/index.html');
     });
 
 
 // REGISTER OUR ROUTES -------------------------------
-// all of our routes will be prefixed with /api
-app.use('/api', router);
+// all of our routes will be prefixed with /api --RETIREI
+app.use('', router);
 
 // START THE SERVER
 // =============================================================================

@@ -10,7 +10,7 @@
 
         $scope.carregaLojas = function(){
             
-              $http.get('http://localhost:3000/api/lojas/').then(function(response){
+              $http.get('http://localhost:3000/lojas/').then(function(response){
       
               $scope.lojas = response.data;
       
