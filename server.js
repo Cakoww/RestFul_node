@@ -61,9 +61,9 @@ router.route('/lojas')
     .post(function(req, res) {
 
         var loja = new Loja();              // create a new instance of the Bear model
-        loja.name = req.body.name;          // set the bears name (comes from the request)
-        loja.latitude = req.body.latitude;  // set the bears name (comes from the request)
-        loja.longitude = req.body.longitude;  // set the bears name (comes from the request)
+        loja.name = req.body.name;         
+        loja.latitude = req.body.latitude;  
+        loja.longitude = req.body.longitude;  
         console.log('request: ' + req.body.name);
 
         // save the bear and check for errors
@@ -112,7 +112,9 @@ router.route('/lojas')
                     if (err)
                         res.send(err);
         
-                    loja.name = req.body.name;  // update the bears info
+                    loja.name = req.body.name;  
+                    loja.latitude = req.body.latitude;  
+                    loja.longitude = req.body.longitude;  
         
                     // save the bear
                     loja.save(function(err) {
@@ -134,7 +136,7 @@ router.route('/lojas')
             if(err)
             res.send(err);
             
-                        res.json({ message: 'Successfully deleted' });
+                res.json({ message: 'Successfully deleted' });
 
 
         });
